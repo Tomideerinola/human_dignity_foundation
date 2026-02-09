@@ -1,0 +1,116 @@
+<footer class="footer-area">
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- <img src="images/hdwf_logo.png" alt="Footer Logo" class="mb-4 footer-logo"> -->
+                <img src="{{url_for('static', filename='images/favicon.jpg')}}" alt="Human Dignity Logo" class="mb-4 footer-logo rounded">
+                <p class="footer-desc">
+                    Human Dignity and Wellness Foundation is a Nigerian-based NGO committed to restoring hope and providing professional support for mental health, human rights, and social justice.
+                </p>
+                <div class="social-links mt-4">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h5 class="footer-title">Navigation</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Our Pillars</a></li>
+                    <li><a href="#impact">Success Stories</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <h5 class="footer-title">Our Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Mental Health Therapy</a></li>
+                    <li><a href="#">Legal Aid for Abuse</a></li>
+                    <li><a href="#">Empowerment Programs</a></li>
+                    <li><a href="#">Rights Advocacy</a></li>
+                    <li><a href="#">Community Wellness</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">Get In Touch</h5>
+                <p class="footer-contact">📍 Lagos, Nigeria</p>
+                <p class="footer-contact">📞 +234 800 344 6489</p>
+                <p class="footer-contact">✉️ hello@hdwfoundation.org</p>
+                
+                <div class="mt-4">
+                    <h6 class="text-white small fw-bold text-uppercase">Support Our Mission</h6>
+                    <a href="#donate" class="btn-donate d-inline-block mt-2 py-2 px-4 shadow-none">Donate Now</a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="row align-items-center">
+            <div class="col-md-12 text-center">
+                <p class="copyright-text mb-0">
+                    &copy; 2026 Human Dignity and Wellness Foundation. All Rights Reserved. 
+                    <br><small class="opacity-50">Providing hope across Nigeria.</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Initialize Animations
+    AOS.init({ duration: 1000, once: true });
+
+    // Simple form interaction
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Your request has been sent! Our team will reach out to you within 24 hours.');
+        this.reset();
+    });
+    const counters = document.querySelectorAll('.counter-value');
+const speed = 200; // The higher the slower
+
+const startCounters = () => {
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 15);
+        } else {
+            counter.innerText = target + "+"; // Adds a plus sign at the end
+        }
+    };
+    updateCount();
+});
+};
+
+// Start the counter when the section is visible on screen
+const observerOptions = {
+threshold: 0.5
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+        startCounters();
+        observer.unobserve(entry.target); // Runs only once
+    }
+});
+}, observerOptions);
+
+observer.observe(document.querySelector('.impact-counter-area'));
+</script>
+</body>
+</html>

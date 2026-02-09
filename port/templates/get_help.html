@@ -1,0 +1,85 @@
+{%include 'nav.html'%}
+<section class="help-hero py-5" style="background: #fdf2f5; border-bottom: 5px solid #c2185b;">
+    <div class="container text-center py-5" data-aos="fade-up">
+        <h1 class="cinzel-font display-4" style="color: #880e4f;">Reach Out For Support</h1>
+        <p class="lead">Your safety and wellbeing are our priority. Tell us how we can help.</p>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="emergency-alert p-3 d-flex align-items-center justify-content-center">
+                    <span class="me-3">🚨</span>
+                    <strong>Immediate Crisis? Call our 24/7 Helpline: 0800-HELP-HDW</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="form-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="help-card shadow-lg p-4 p-md-5 bg-white border-0" style="border-radius: 30px; margin-top: -60px;">
+                    <h3 class="cinzel-font mb-4 text-center">Support Request Form</h3>
+                    
+                    <form id="helpForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">Full Name (or Alias)</label>
+                                <input type="text" class="form-control custom-input" placeholder="Your name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">Phone Number</label>
+                                <input type="tel" class="form-control custom-input" placeholder="080...">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label fw-bold small">What kind of support do you need?</label>
+                                <select class="form-select custom-input">
+                                    <option selected disabled>Choose a service...</option>
+                                    <option>Mental Health Counseling</option>
+                                    <option>Abuse/Gender-Based Violence Support</option>
+                                    <option>Human Rights/Legal Advocacy</option>
+                                    <option>General Wellness/Social Support</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold small">Urgency Level</label>
+                                <div class="d-flex gap-3 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="urgency" id="urgent">
+                                        <label class="form-check-label" for="urgent">High (Immediate Risk)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="urgency" id="normal" checked>
+                                        <label class="form-check-label" for="normal">Standard (Within 24-48hrs)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold small">Briefly describe your situation</label>
+                                <textarea class="form-control custom-input" rows="5" placeholder="Share as much or as little as you feel comfortable with..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check p-3 rounded" style="background: #fffafa;">
+                                    <input class="form-check-input ms-0 me-2" type="checkbox" id="privacy" required>
+                                    <label class="form-check-label small" for="privacy">
+                                        I understand that my information is confidential and will be used only to provide support.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn-donate w-100 py-3">Submit Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%include 'footer.html'%}

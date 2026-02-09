@@ -10,4 +10,18 @@ from port.form import ContactForm
 
 @app.get('/')
 def home():
-    return 'Test'
+    return render_template('index.html')
+
+
+@app.get('/get/help')
+def get_help():
+    return render_template('get_help.html')
+
+@app.get('/contact')
+def contact():
+    form = ContactForm()
+    return render_template('contact.html',form=form)
+
+@app.get('/about')
+def about():
+    return render_template('about.html')
