@@ -1,0 +1,143 @@
+{% include 'nav.html' %}
+
+<section class="volunteer-hero py-5" style="background: linear-gradient(rgba(45, 5, 18, 0.7), rgba(136, 14, 79, 0.5)), url('{{ url_for('static', filename='images/volunteer.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="container text-center py-5" data-aos="fade-up">
+        <h6 class="text-white text-uppercase ls-5 mb-3 opacity-75">Join the Movement</h6>
+        <h1 class="cinzel-font display-3 text-white mb-4">Be the <span class="italic-serif text-pink-light">Change</span> Nigeria Needs.</h1>
+        <p class="lead mx-auto text-white opacity-90" style="max-width: 750px;">
+            Your skills, time, and compassion can restore dignity to those who have lost it. Join our community of dedicated change-makers today.
+        </p>
+    </div>
+</section>
+
+<section class="why-volunteer py-5 bg-white">
+    <div class="container py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h6 class="text-pink text-uppercase fw-bold ls-3 mb-3">The Opportunity</h6>
+                <h2 class="cinzel-font mb-4" style="color: #2d0512;">Your Hands, <br>Our Shared Mission.</h2>
+                <p class="text-muted mb-4">Volunteering with HDW Foundation is more than just service—it's an opportunity to grow, connect with like-minded professionals, and see the direct impact of your work in real-time.</p>
+                
+                <div class="benefit-list">
+                    <div class="d-flex mb-3">
+                        <div class="check-icon me-3">✨</div>
+                        <p class="mb-0"><strong>Professional Growth:</strong> Enhance your skills in advocacy and social work.</p>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="check-icon me-3">✨</div>
+                        <p class="mb-0"><strong>Community:</strong> Join a network of passionate Nigerian professionals.</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="check-icon me-3">✨</div>
+                        <p class="mb-0"><strong>Direct Impact:</strong> Witness lives being transformed by your contribution.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="role-card p-4 text-center">
+                            <i class="fas fa-gavel mb-3 text-pink fa-2x"></i>
+                            <h6 class="fw-bold">Legal Aid</h6>
+                            <p class="x-small text-muted mb-0">Lawyers & paralegals helping survivors.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="role-card p-4 text-center">
+                            <i class="fas fa-heartbeat mb-3 text-pink fa-2x"></i>
+                            <h6 class="fw-bold">Counseling</h6>
+                            <p class="x-small text-muted mb-0">Mental health pros & listeners.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="role-card p-4 text-center">
+                            <i class="fas fa-camera mb-3 text-pink fa-2x"></i>
+                            <h6 class="fw-bold">Media</h6>
+                            <p class="x-small text-muted mb-0">Storytellers, PR, & Photographers.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="role-card p-4 text-center">
+                            <i class="fas fa-users mb-3 text-pink fa-2x"></i>
+                            <h6 class="fw-bold">General</h6>
+                            <p class="x-small text-muted mb-0">Event planning & logistics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="volunteer-form-area py-5" style="background: #fffcfd;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-white shadow-luxury p-5 rounded-4 border-top-pink">
+                    <div class="text-center mb-5">
+                        <h3 class="cinzel-font">Volunteer Application</h3>
+                        <p class="small text-muted">Please complete the form below. We'll review your application within 3–5 business days.</p>
+                    </div>
+                    
+                    <form id="volunteerForm">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold x-small text-uppercase">Full Name</label>
+                                <input type="text" class="form-control luxury-input" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold x-small text-uppercase">Email Address</label>
+                                <input type="email" class="form-control luxury-input" placeholder="Email@example.com" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold x-small text-uppercase">Primary Area of Interest</label>
+                                <select class="form-select luxury-input" required>
+                                    <option selected disabled>Select a role...</option>
+                                    <option>Legal Advocacy</option>
+                                    <option>Mental Health/Counseling</option>
+                                    <option>Media & Communications</option>
+                                    <option>Event Management</option>
+                                    <option>Administration</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold x-small text-uppercase">Phone (WhatsApp Preferred)</label>
+                                <input type="tel" class="form-control luxury-input" placeholder="080...">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold x-small text-uppercase">Why do you want to join HDWF?</label>
+                                <textarea class="form-control luxury-input" rows="4" placeholder="Briefly describe your motivation and relevant experience..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold x-small text-uppercase">Availability</label>
+                                <div class="d-flex flex-wrap gap-3 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="weekdays">
+                                        <label class="form-check-label small" for="weekdays">Weekdays</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="weekends">
+                                        <label class="form-check-label small" for="weekends">Weekends</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="remote">
+                                        <label class="form-check-label small" for="remote">Remote/Online</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-5">
+                                <button type="submit" class="btn-luxury-pink w-100 py-3">Submit My Application</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}

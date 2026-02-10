@@ -25,3 +25,19 @@ def contact():
 @app.get('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/donate',methods=['GET','POST'])
+def donate():
+    return render_template('donate.html')
+
+@app.route('/volunteer',methods=['GET','POST'])
+def volunteer():
+    return render_template('volunteer.html')
+
+@app.route('/services',methods=['GET','POST'])
+def services():
+    return render_template('services.html')
+
+@app.route('/formy',methods=['GET','POST'])
+def formy():
+    return render_template('formy.html')

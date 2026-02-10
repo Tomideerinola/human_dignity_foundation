@@ -18,11 +18,11 @@
             <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                 <h5 class="footer-title">Navigation</h5>
                 <ul class="list-unstyled footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#services">Our Pillars</a></li>
-                    <li><a href="#impact">Success Stories</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('services')}}">Our Services</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                    <li><a href="{{url_for('volunteer')}}">Volunteer</a></li>
                 </ul>
             </div>
 
@@ -45,7 +45,7 @@
                 
                 <div class="mt-4">
                     <h6 class="text-white small fw-bold text-uppercase">Support Our Mission</h6>
-                    <a href="#donate" class="btn-donate d-inline-block mt-2 py-2 px-4 shadow-none">Donate Now</a>
+                    <a href="{{url_for('donate')}}" class="btn-donate d-inline-block mt-2 py-2 px-4 shadow-none">Donate Now</a>
                 </div>
             </div>
         </div>
@@ -63,54 +63,87 @@
     </div>
 </footer>
 
+
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-2xl" style="border-radius: 30px; overflow: hidden;">
+            
+            <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-body p-0">
+                <div class="form-glass-card p-4 p-md-5 bg-white">
+                    <div class="text-center mb-4">
+                        <span class="badge px-3 py-2 mb-3" style="background: #fce4ec; color: #880e4f; border-radius: 50px; letter-spacing: 1px; font-size: 0.7rem;">CONFIDENTIAL INTAKE</span>
+                        <h2 class="cinzel-font mb-2" style="color: #2d0512;">Secure Support Request</h2>
+                        <p class="text-muted small">Your safety is our priority. Our team handles every request with 100% encryption.</p>
+                    </div>
+
+                    <form id="mainSupportForm" class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-uppercase ls-1">Full Name</label>
+                            <input type="text" name="name" class="form-control form-input-elite" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-uppercase ls-1">Contact Details</label>
+                            <input type="text" name="contact" class="form-control form-input-elite" placeholder="Email or Phone" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label fw-bold small text-uppercase ls-1">Service Required</label>
+                            <select id="modalServiceDropdown" name="service" class="form-select form-input-elite" required>
+                                <option value="" selected disabled>Select the area you need help with...</option>
+                                <option value="MentalHealth">🧠 Mental Health Support</option>
+                                <option value="AbuseProtection">🛡️ Abuse Protection</option>
+                                <option value="HumanRights">⚖️ Human Rights Advocacy</option>
+                                <option value="GeneralWellness">🌱 General Wellness</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-uppercase ls-1" style="color: #c2185b;">Urgency Level</label>
+                            <div class="custom-radio-group mt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input custom-radio" type="radio" name="urgency" id="urgentModal" value="High">
+                                    <label class="form-check-label small fw-semibold" for="urgentModal">High (Immediate)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-radio" type="radio" name="urgency" id="normalModal" value="Standard" checked>
+                                    <label class="form-check-label small" for="normalModal">Standard</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-uppercase ls-1">Preferred Response</label>
+                            <div class="custom-radio-group mt-1">
+                                <div class="form-check">
+                                    <input class="form-check-input custom-radio" type="radio" name="method" id="methodCallModal" value="Phone Call">
+                                    <label class="form-check-label small" for="methodCallModal">Voice Call</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-radio" type="radio" name="method" id="methodTextModal" value="WhatsApp" checked>
+                                    <label class="form-check-label small" for="methodTextModal">WhatsApp/Text</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <textarea name="message" class="form-control form-input-elite" rows="3" placeholder="How can we best support you?"></textarea>
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn-submit-elite w-100 py-3 shadow">Send Confidential Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    // Initialize Animations
-    AOS.init({ duration: 1000, once: true });
-
-    // Simple form interaction
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Your request has been sent! Our team will reach out to you within 24 hours.');
-        this.reset();
-    });
-    const counters = document.querySelectorAll('.counter-value');
-const speed = 200; // The higher the slower
-
-const startCounters = () => {
-counters.forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const inc = target / speed;
-
-        if (count < target) {
-            counter.innerText = Math.ceil(count + inc);
-            setTimeout(updateCount, 15);
-        } else {
-            counter.innerText = target + "+"; // Adds a plus sign at the end
-        }
-    };
-    updateCount();
-});
-};
-
-// Start the counter when the section is visible on screen
-const observerOptions = {
-threshold: 0.5
-};
-
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-    if (entry.isIntersecting) {
-        startCounters();
-        observer.unobserve(entry.target); // Runs only once
-    }
-});
-}, observerOptions);
-
-observer.observe(document.querySelector('.impact-counter-area'));
-</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
