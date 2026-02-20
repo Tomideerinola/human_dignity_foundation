@@ -4,7 +4,7 @@ from flask_mail import Message
 from flask import render_template,redirect,request,url_for,make_response,session,flash,jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from port import app,csrf,mail
-from port.models import db
+from port.models import db, ContactMessage
 from port.form import ContactForm
 
 
@@ -17,10 +17,27 @@ def home():
 def get_help():
     return render_template('get_help.html')
 
-@app.get('/contact')
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
-    return render_template('contact.html',form=form)
+
+    if form.validate_on_submit():
+        new_message = ContactMessage(
+            full_name=form.full_name.data,
+            subject=form.subject.data,
+            email=form.email.data,
+            contact_pref=form.contact_pref.data,
+            message=form.message.data
+        )
+
+        db.session.add(new_message)
+        db.session.commit()
+
+        flash("Your message has been sent successfully.", "success")
+        return redirect(url_for("contact"))
+
+    return render_template("contact.html", form=form)
 
 @app.get('/about')
 def about():

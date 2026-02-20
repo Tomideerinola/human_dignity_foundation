@@ -5,9 +5,37 @@ from flask_wtf.file import FileAllowed,FileRequired
 
 
 class ContactForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    phone = TelField("Phone Number", validators=[DataRequired(), Length(min=5, max=20)])
-    message = TextAreaField('Message', validators=[DataRequired()])
-    contact_method = RadioField('Preferred Contact Method',choices=[('call', 'Call'), ('text', 'Text')],validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    full_name = StringField(
+        "Full Name",
+        validators=[DataRequired(), Length(max=120)]
+    )
+
+    subject = SelectField(
+        "Subject",
+        choices=[
+            ("General Inquiry", "General Inquiry"),
+            ("Partnership Proposal", "Partnership Proposal"),
+            ("Media/Press", "Media/Press"),
+            ("Volunteering", "Volunteering"),
+        ],
+        validators=[DataRequired()]
+    )
+
+    email = StringField(
+        "Email Address",
+        validators=[DataRequired(), Email()]
+    )
+
+    contact_pref = RadioField(
+        "Preferred Response",
+        choices=[
+            ("Email", "Email Response"),
+            ("Phone", "Phone Call")
+        ],
+        default="Email"
+    )
+
+    message = TextAreaField(
+        "Message",
+        validators=[DataRequired(), Length(min=10)]
+    )

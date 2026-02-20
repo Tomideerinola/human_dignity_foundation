@@ -101,3 +101,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+// faq js 
+
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        
+        // If the clicked item is already active, just close it
+        if (parent.classList.contains('active')) {
+            parent.classList.remove('active');
+        } else {
+            // Close all other items first
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // Open the clicked item
+            parent.classList.add('active');
+        }
+    });
+});
+
+
+// donate copy js 
+
+function copyAccount() {
+    const accNum = "1234567890";
+    navigator.clipboard.writeText(accNum).then(() => {
+        alert("Account number copied to clipboard!");
+    });
+}
+
+
+// flash message js 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const flashContainer = document.getElementById('flash-container');
+    if (flashContainer) {
+        // Remove the element from DOM after 5 seconds
+        setTimeout(() => {
+            flashContainer.style.display = 'none';
+            // Optional: completely remove from HTML
+            flashContainer.remove();
+        }, 5000); 
+    }
+});

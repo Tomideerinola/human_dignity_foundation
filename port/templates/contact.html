@@ -10,6 +10,24 @@
 <section class="contact-body py-5">
     <div class="container">
         <div class="row g-5">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-container" class="flash-container">
+            {% for category, message in messages %}
+                <div class="custom-flash-toast shadow-lg" role="alert">
+                <div class="toast-accent"></div>
+                <div class="toast-content">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <span>{{ message }}</span>
+                </div>
+                <button type="button" class="btn-close-small" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
             <div class="col-lg-4" data-aos="fade-right">
                 <div class="contact-info-card p-4 mb-4">
                     <div class="d-flex align-items-center mb-4">
@@ -51,34 +69,71 @@
             <div class="col-lg-8" data-aos="fade-left">
                 <div class="bg-white p-4 p-md-5 shadow-sm" style="border-radius: 30px; border: 1px solid #fce4ec;">
                     <h3 class="cinzel-font mb-4">Send a Message</h3>
-                    <form>
-                        <div class="row g-3">
+                    <form method="POST" action="{{ url_for('contact') }}" id="homeContactForm">
+                        {{ form.hidden_tag() }}
+                    
+                        <div class="row g-4">
+                    
+                            <!-- Full Name -->
                             <div class="col-md-6">
-                                <label class="form-label small fw-bold">Full Name</label>
-                                <input type="text" class="form-control custom-input" placeholder="Your name">
+                                <label class="form-label small fw-bold text-uppercase ls-1">
+                                    {{ form.full_name.label.text }}
+                                </label>
+                                {{ form.full_name(class="form-control custom-input", placeholder="Your name") }}
                             </div>
+                    
+                            <!-- Subject -->
                             <div class="col-md-6">
-                                <label class="form-label small fw-bold">Subject</label>
-                                <select class="form-select custom-input">
-                                    <option>General Inquiry</option>
-                                    <option>Partnership Proposal</option>
-                                    <option>Media/Press</option>
-                                    <option>Volunteering</option>
-                                </select>
+                                <label class="form-label small fw-bold text-uppercase ls-1">
+                                    {{ form.subject.label.text }}
+                                </label>
+                                {{ form.subject(class="form-select custom-input") }}
                             </div>
+                    
+                            <!-- Email -->
                             <div class="col-12">
-                                <label class="form-label small fw-bold">Email Address</label>
-                                <input type="email" class="form-control custom-input" placeholder="email@example.com">
+                                <label class="form-label small fw-bold text-uppercase ls-1">
+                                    {{ form.email.label.text }}
+                                </label>
+                                {{ form.email(class="form-control custom-input", placeholder="email@example.com") }}
                             </div>
+                    
+                            <!-- Preferred Response -->
                             <div class="col-12">
-                                <label class="form-label small fw-bold">Your Message</label>
-                                <textarea class="form-control custom-input" rows="5" placeholder="How can we help you?"></textarea>
+                                <label class="form-label small fw-bold text-uppercase ls-1" style="color: #c2185b;">
+                                    {{ form.contact_pref.label.text }}
+                                </label>
+                    
+                                <div class="d-flex gap-4 mt-2">
+                                    {% for subfield in form.contact_pref %}
+                                        <div class="form-check">
+                                            {{ subfield(class="form-check-input custom-radio") }}
+                                            <label class="form-check-label small">
+                                                {{ subfield.label.text }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
+                    
+                            <!-- Message -->
                             <div class="col-12">
-                                <button type="submit" class="btn-donate px-5 py-3 mt-2">Send Message</button>
+                                <label class="form-label small fw-bold text-uppercase ls-1">
+                                    {{ form.message.label.text }}
+                                </label>
+                                {{ form.message(class="form-control custom-input", rows="4", placeholder="How can we help you?") }}
                             </div>
+                    
+                            <!-- Submit -->
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-luxury-pink px-5 py-3 mt-2 rounded-pill">
+                                    Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
+                            </div>
+                    
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
